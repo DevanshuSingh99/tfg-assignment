@@ -4,7 +4,7 @@ const publisher = (queueName, data) => {
     return new Promise(async (resolve, reject) => {
         try {
             resolve();
-            amqp.connect("amqp://localhost", async (err, connection) => {
+            amqp.connect(process.env.RABBITMQ_URL, async (err, connection) => {
                 connection.createChannel((err, channel) => {
                     channel.assertQueue(queueName, { durable: false });
 

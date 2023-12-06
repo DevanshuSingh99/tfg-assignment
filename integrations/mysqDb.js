@@ -5,19 +5,13 @@ var mysqlDb;
 function connectMySql() {
     return new Promise((resolve, reject) => {
         mysqlDb = createConnection({
-            host: "localhost",
-            user: "root",
-            password: "admin",
-            database: "new_schema",
+            host: process.env.MYSQL_HOST,
+            user: process.env.MYSQL_USER,
+            password: process.env.MYSQL_PASSWORD,
+            database: process.env.MYSQL_DB,
         }).promise();
         resolve();
     });
 }
 
 export { connectMySql, mysqlDb };
-// export const db = createConnection({
-//     host: "localhost",
-//     user: "root",
-//     password: "admin",
-//     database: "new_schema",
-// }).promise();
